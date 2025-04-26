@@ -817,6 +817,7 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
+      'onsails/lspkind.nvim',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -843,7 +844,14 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'none',
+        ['<Esc>'] = { 'hide', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<s-Tab>'] = { 'select_prev', 'fallback' },
+        ['<Enter>'] = { 'select_and_accept', 'fallback' },
+        ['<C-space>'] = { 'show', 'hide', 'show_documentation', 'hide_documentation' },
+        ['<Up>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<Down>'] = { 'scroll_documentation_down', 'fallback' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -858,7 +866,46 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        accept = { auto_brackets = { enabled = true } },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 250,
+          treesitter_highlighting = true,
+          window = { border = 'rounded' },
+        },
+        menu = {
+          border = 'rounded',
+          auto_show = true,
+          draw = {
+            padding = 2,
+            gap = 2,
+            columns = {
+              { 'kind_icon', 'label', gap = 1 },
+              { 'kind' },
+            },
+            components = {
+              kind_icon = {
+                text = function(item)
+                  local kind = require('lspkind').symbol_map[item.kind] or ''
+                  return kind .. ' '
+                end,
+                highlight = 'CmpItemKind',
+              },
+              label = {
+                text = function(item)
+                  return item.label
+                end,
+                highlight = 'CmpItemAbbr',
+              },
+              kind = {
+                text = function(item)
+                  return item.kind
+                end,
+                highlight = 'CmpItemKind',
+              },
+            },
+          },
+        },
       },
 
       sources = {
@@ -880,7 +927,12 @@ require('lazy').setup({
       fuzzy = { implementation = 'lua' },
 
       -- Shows a signature help window while you type arguments for a function
-      signature = { enabled = true },
+      signature = {
+        enabled = true,
+        window = {
+          border = 'rounded',
+        },
+      },
     },
   },
 
