@@ -13,9 +13,11 @@ return {
   keys = {
     { '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
+  lazy = false,
   opts = {
     filesystem = {
       hijack_netrw_behavior = 'open_current',
+      use_libuv_file_watcher = false,
       window = {
         mappings = {
           ['<leader>e'] = 'close_window',
