@@ -176,7 +176,8 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('i', 'jj', '<Esc>')
-
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>')
+vim.keymap.set('n', '<leader>m', ':Mason<CR>')
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
