@@ -22,6 +22,7 @@ return {
         mappings = {
           ['<leader>e'] = 'close_window',
           ['l'] = 'open',
+          ['e'] = 'expand_all_subnodes',
         },
       },
     },
