@@ -2,7 +2,8 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 map('n', '<leader>w', '<Cmd>w<CR>', { desc = '[W]rite Buffer', noremap = true, silent = true })
-map('n', '<leader>q', '<Cmd>BufferClose<CR>', { desc = '[Q]uit Buffer', noremap = true, silent = true })
+map('n', '<leader>c', '<Cmd>BufferClose<CR>', { desc = '[C]lose Buffer', noremap = true, silent = true })
+map('n', '<leader>q', '<Cmd>q<CR>', { desc = '[W]rite Buffer', noremap = true, silent = true })
 
 return {
   'romgrk/barbar.nvim',
