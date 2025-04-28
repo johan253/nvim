@@ -3,5 +3,6 @@ return {
   version = '*',
   opts = {
     open_mapping = [[<c-\>]],
+    size = 25,
   },
 }
