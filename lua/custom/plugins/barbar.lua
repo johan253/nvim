@@ -3,6 +3,7 @@ local opts = { noremap = true, silent = true }
 
 map('n', '<leader>w', '<Cmd>w<CR>', { desc = '[W]rite Buffer', noremap = true, silent = true })
 map('n', '<leader>c', '<Cmd>BufferClose<CR>', { desc = '[C]lose Buffer', noremap = true, silent = true })
+map('n', '<leader>C', '<Cmd>BufferClose!<CR>', { desc = '[!]Force [C]lose Buffer', noremap = true, silent = true })
 map('n', '<leader>q', '<Cmd>q<CR>', { desc = '[W]rite Buffer', noremap = true, silent = true })
 
 return {

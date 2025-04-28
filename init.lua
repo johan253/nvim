@@ -546,6 +546,8 @@ require('lazy').setup({
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
+          -- CUSTOM LSP Mappings =======
+          map('grs', vim.lsp.buf.signature_help, '[S]ignature')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
